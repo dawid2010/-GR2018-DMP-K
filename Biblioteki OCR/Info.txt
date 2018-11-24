@@ -1,0 +1,31 @@
+Przegląd dostepnych bilbiotek możliwych do użycia w Android Studio:
+-Biblioteka - CODETR
+Turtorial użycia:
+Android Studio - How to make Camera To Text use OCR Exmaple on Calculator
+https://www.youtube.com/watch?v=EDaC7m2psq8
+Źródło danych: TextAndLanguageUseCamera.rar
+
+-Biblioteka Eyes-Two
+Turtorial użycia:
+http://gaut.am/making-an-ocr-android-app-using-tesseract/
+Źródło danych:
+
+-Bilbioteka od Googla Developers
+https://codelabs.developers.google.com/codelabs/mobile-vision-ocr/#0
+Źródło danych: android-vision-master
+
+-Biblioteka SKD Free od ABBYY
+https://rtrsdk.com/documentation/android/quick-start-guide/
+Źródło danych:  abbyy-rtr-sdk-1.0.8.26.Android.zip
+
+-Biblioteka OCR RMTHeis
+https://github.com/rmtheis/android-ocr
+Źrodło danych: android-ocr-master.zip
+
+
+-Biblioteka od Android Mobile Vision Library
+https://www.truiton.com/2016/11/optical-character-recognition-android-ocr/
+Źródło danych: compile 'com.google.android.gms:play-services-vision:11.4.0'
+
+
+
