@@ -1,0 +1,2 @@
+Schemat API
+Api jako warstwa zawieraj¹c¹ logike biznesow¹ ca³ego systemu. Api za zadanie ma udostêpniæ interfejs programistyczny maj¹cy na celu umo¿liwienia po³¹czenia do bazy danych MSSQL oraz operacji na danych wg. schematu bazy danych. Api bêdzie odpowiedzialne za umo¿liwienie za dodawanie, usuwanie, edytowanie danych w bazie danych. Interfejs udostêpniaæ bêdzie mo¿liwoœæ operowania oraz wykonywania operacji po stronie serwera. Api zwracaæ bêdzie dane przetworzone w ten sposób by spe³niæ wymagania funkcyjne aplikacji mobilnej oraz webowej.
