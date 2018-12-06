@@ -1,12 +1,22 @@
 package pawel.wiklo.swinkaskarbonka;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,6 +26,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -29,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getData(View view) {
-        new WebServiceHandler().execute("https://pokeapi.co/api/v2/pokemon/25");
+        new WebServiceHandler().execute("https://jsonplaceholder.typicode.com/todos/1");
+        Log.d("1234","1");
     }
 
 
@@ -53,6 +66,7 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... urls) {
 
         try {
+            Log.d("1234","2");
             // zakładamy, że jest tylko jeden URL
             URL url = new URL(urls[0]);
             URLConnection connection = url.openConnection();
@@ -62,6 +76,7 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
             // konwersja InputStream na String
             // wynik będzie przekazany do metody onPostExecute()
+            Log.d("1234","3");
             return streamToString(in);
 
         } catch (Exception e) {
@@ -77,59 +92,34 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
     // w tej metodzie mamy dostęp do UI
     @Override
     protected void onPostExecute(String result) {
-
+        Log.d("1234","4");
         // chowamy okno dialogowe
         dialog.dismiss();
 
         try {
+            Log.d("1234","5");
             // reprezentacja obiektu JSON w Javie
             JSONObject json = new JSONObject(result);
-            JSONArray forms = json.getJSONArray("forms");
-            for (int i = 0; i < forms.length(); i++) {
-                JSONObject c = forms.getJSONObject(i);
+            Log.d("1234","6");
+            Log.d("1234","result:" + json);
 
-                //String url = c.getString("url");
-                String name = c.getString("name");
+            String exampleuserId = json.getString("userId");
+            Log.d("1234","result2:" + exampleuserId);
+            String exampleId = json.getString("userId");
+            Log.d("1234","result2:" + exampleId);
+            String exampleTitle = json.getString("title");
+            Log.d("1234","result2:" + exampleTitle);
+            String exampleCompleted = json.getString("completed");
+            Log.d("1234","result2:" + exampleCompleted);
 
+            TextView tv = ((TextView) findViewById(R.id.texvView));
+                tv.setText(exampleuserId+"\n"+exampleId+"\n"+exampleTitle+"\n"+exampleCompleted);
 
-                //JSONObject phone = c.getJSONObject("sprites");
-                //String sprite = phone.getString("front_default");
-
-
-                //((TextView) findViewById(R.id.response_id)).setText("id: " + sprite);
-                //((TextView) findViewById(R.id.response_name)).setText(name);
-                //sprite
-                JSONObject nested= json.getJSONObject("sprites");
-                Log.d("TAG","flag value "+nested.getString("front_default"));
-                String SpriteUrl = nested.getString("front_default");
-
-
-                //((TextView) findViewById(R.id.response_name2)).setText(SpriteUrl);
-                //end sprite
-
-                //wyswietlanie obrazka
-                //String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png";
-                //ImageView imageView = (ImageView)findViewById(R.id.imageView2);
-((TextView) findViewById(R.id.texvView)).setText(name);
-            }
-            JSONArray forms2 = json.getJSONArray("types");
-            for (int i = 0; i < forms2.length(); i++) {
-                JSONObject c = forms2.getJSONObject(i);
-                JSONObject phone = c.getJSONObject("type");
-                String mobile = phone.getString("name");
-                //TextView tv = ((TextView) findViewById(R.id.response_name2));
-                //((TextView) findViewById(R.id.response_name2)).setText(tv.getText()+" "+mobile);
-
-            }
-
-
-            // pobranie pól obiektu JSON i wyświetlenie ich na ekranie
-            //((TextView) findViewById(R.id.response_id)).setText("id: " + json.optString("ulr"));
-            //((TextView) findViewById(R.id.response_name)).setText("name: " + json.optString("name"));
 
         } catch (Exception e) {
             // obsłuż wyjątek
             Log.d(MainActivity.class.getSimpleName(), e.toString());
+            Log.d("1234","failed");
         }
     }
 }
