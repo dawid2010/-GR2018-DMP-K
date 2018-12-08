@@ -1,0 +1,133 @@
+CREATE TABLE [Account] (
+	id int(3) NOT NULL,
+	name varchar(255) NOT NULL,
+	income_id int(3) NOT NULL,
+	outcome_id int(3) NOT NULL,
+  CONSTRAINT [PK_ACCOUNT] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [User] (
+	id int(3) NOT NULL,
+	first_name varchar(255) NOT NULL,
+	last_name varchar(255) NOT NULL,
+	email varchar(255) NOT NULL,
+	password varchar(255) NOT NULL,
+	account_id int(3) NOT NULL,
+	type varchar(255) NOT NULL,
+  CONSTRAINT [PK_USER] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Outcome] (
+	id int(3) NOT NULL,
+	name varchar(255) NOT NULL,
+	value decimal(10) NOT NULL,
+	type int(3) NOT NULL,
+	date datetime NOT NULL,
+  CONSTRAINT [PK_OUTCOME] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Income] (
+	id int(3) NOT NULL,
+	name varchar(255) NOT NULL,
+	value decimal(10) NOT NULL,
+	date datetime NOT NULL,
+  CONSTRAINT [PK_INCOME] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Outcome_type] (
+	id int(3) NOT NULL,
+	type varchar(255) NOT NULL,
+  CONSTRAINT [PK_OUTCOME_TYPE] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Home] (
+	id int(3) NOT NULL,
+	admin_id int(3) NOT NULL UNIQUE,
+	user_id int(3) NOT NULL UNIQUE,
+	name varchar(255) NOT NULL,
+	reflink_id int(3) NOT NULL,
+  CONSTRAINT [PK_HOME] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [reflink] (
+	id int(3) NOT NULL,
+	value varchar(255) NOT NULL,
+	home_id int(3) NOT NULL,
+  CONSTRAINT [PK_REFLINK] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+ALTER TABLE [Account] WITH CHECK ADD CONSTRAINT [Account_fk0] FOREIGN KEY ([income_id]) REFERENCES [Income]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Account] CHECK CONSTRAINT [Account_fk0]
+GO
+ALTER TABLE [Account] WITH CHECK ADD CONSTRAINT [Account_fk1] FOREIGN KEY ([outcome_id]) REFERENCES [Outcome]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Account] CHECK CONSTRAINT [Account_fk1]
+GO
+
+ALTER TABLE [User] WITH CHECK ADD CONSTRAINT [User_fk0] FOREIGN KEY ([account_id]) REFERENCES [Account]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [User] CHECK CONSTRAINT [User_fk0]
+GO
+
+ALTER TABLE [Outcome] WITH CHECK ADD CONSTRAINT [Outcome_fk0] FOREIGN KEY ([type]) REFERENCES [Outcome_type]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Outcome] CHECK CONSTRAINT [Outcome_fk0]
+GO
+
+
+
+ALTER TABLE [Home] WITH CHECK ADD CONSTRAINT [Home_fk0] FOREIGN KEY ([admin_id]) REFERENCES [User]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Home] CHECK CONSTRAINT [Home_fk0]
+GO
+ALTER TABLE [Home] WITH CHECK ADD CONSTRAINT [Home_fk1] FOREIGN KEY ([user_id]) REFERENCES [User]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Home] CHECK CONSTRAINT [Home_fk1]
+GO
+ALTER TABLE [Home] WITH CHECK ADD CONSTRAINT [Home_fk2] FOREIGN KEY ([reflink_id]) REFERENCES [reflink]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Home] CHECK CONSTRAINT [Home_fk2]
+GO
+
+ALTER TABLE [reflink] WITH CHECK ADD CONSTRAINT [reflink_fk0] FOREIGN KEY ([home_id]) REFERENCES [Home]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [reflink] CHECK CONSTRAINT [reflink_fk0]
+GO
+
