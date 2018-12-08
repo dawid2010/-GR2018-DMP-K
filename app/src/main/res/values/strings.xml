@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Swinka Skarbonka</string>
+    <string name="title_activity_dodawanie_wydatkow">Dodawanie_wydatkow</string>
 </resources>

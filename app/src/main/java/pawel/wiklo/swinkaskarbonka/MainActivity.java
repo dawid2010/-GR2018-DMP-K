@@ -43,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
     public void getData(View view) {
         new WebServiceHandler().execute("https://jsonplaceholder.typicode.com/todos/1");
         Log.d("1234","1");
+
     }
 
+    public void getWydatek(View view) {
+        Intent intent = new Intent(this, dodawanieWydatkow.class);
+        startActivity(intent);
+    }
 
 private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
