@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getWydatek(View view) {
-        Intent intent = new Intent(this, dodawanieWydatkow.class);
+        Intent intent = new Intent(this, zarzadzanieWydatkami.class);
         startActivity(intent);
     }
 
