@@ -19,15 +19,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".dodawanieWydatkow" />
         <activity android:name=".zarzadzanieWydatkami" />
-        <activity android:name=".Logowanie" />
+        <activity android:name=".Logowanie">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>/>
+        </activity>
+
         <activity android:name=".Rejestracja"></activity>
     </application>
 
