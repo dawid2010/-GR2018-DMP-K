@@ -25,6 +25,11 @@ public class Logowanie extends AppCompatActivity {
         }
     }
 
+    public void rejestracja(View view) {
+        Intent intent = new Intent(this, Rejestracja.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
