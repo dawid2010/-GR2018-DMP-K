@@ -11,18 +11,20 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".addIncome"/>
 
-        </activity>
-        <activity android:name=".addIncome">
+        <activity android:name=".ChartsView" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+        <activity android:name=".BarchartIncome" />
+        <activity android:name=".BarchartExpenses" />
+        <activity android:name=".PiechartIncome" />
+        <activity android:name=".PiechartExpenses"></activity>
     </application>
 
 </manifest>
