@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getData(View view) {
         new WebServiceHandler().execute("https://jsonplaceholder.typicode.com/todos/1");
-        Log.d("1234","1");
+        Log.d("DebugLog","1");
     }
 
 
@@ -66,7 +66,7 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... urls) {
 
         try {
-            Log.d("1234","2");
+            Log.d("DebugLog","2");
             // zakładamy, że jest tylko jeden URL
             URL url = new URL(urls[0]);
             URLConnection connection = url.openConnection();
@@ -76,7 +76,7 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
             // konwersja InputStream na String
             // wynik będzie przekazany do metody onPostExecute()
-            Log.d("1234","3");
+            Log.d("DebugLog","3");
             return streamToString(in);
 
         } catch (Exception e) {
@@ -92,25 +92,25 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
     // w tej metodzie mamy dostęp do UI
     @Override
     protected void onPostExecute(String result) {
-        Log.d("1234","4");
+        Log.d("DebugLog","4");
         // chowamy okno dialogowe
         dialog.dismiss();
 
         try {
-            Log.d("1234","5");
+            Log.d("DebugLog","5");
             // reprezentacja obiektu JSON w Javie
             JSONObject json = new JSONObject(result);
-            Log.d("1234","6");
-            Log.d("1234","result:" + json);
+            Log.d("DebugLog","6");
+            Log.d("DebugLog","result:" + json);
 
             String exampleuserId = json.getString("userId");
-            Log.d("1234","result2:" + exampleuserId);
+            Log.d("DebugLog","result2:" + exampleuserId);
             String exampleId = json.getString("userId");
-            Log.d("1234","result2:" + exampleId);
+            Log.d("DebugLog","result2:" + exampleId);
             String exampleTitle = json.getString("title");
-            Log.d("1234","result2:" + exampleTitle);
+            Log.d("DebugLog","result2:" + exampleTitle);
             String exampleCompleted = json.getString("completed");
-            Log.d("1234","result2:" + exampleCompleted);
+            Log.d("DebugLog","result2:" + exampleCompleted);
 
             TextView tv = ((TextView) findViewById(R.id.texvView));
                 tv.setText(exampleuserId+"\n"+exampleId+"\n"+exampleTitle+"\n"+exampleCompleted);
@@ -119,7 +119,7 @@ private class WebServiceHandler extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             // obsłuż wyjątek
             Log.d(MainActivity.class.getSimpleName(), e.toString());
-            Log.d("1234","failed");
+            Log.d("DebugLog","failed");
         }
     }
 }
