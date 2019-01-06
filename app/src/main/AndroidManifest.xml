@@ -15,16 +15,28 @@
         <activity android:name=".addIncome"/>
 
         <activity android:name=".ChartsView" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
     </activity>
         <activity android:name=".BarchartIncome" />
         <activity android:name=".BarchartExpenses" />
         <activity android:name=".PiechartIncome" />
-        <activity android:name=".PiechartExpenses"></activity>
+        <activity android:name=".PiechartExpenses">
+
+
+
+        </activity>
+        <activity android:name=".dodawanieWydatkow" />
+        <activity android:name=".zarzadzanieWydatkami" />
+        <activity android:name=".Logowanie">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            />
+        </activity>
+        <activity android:name=".Rejestracja" />
+        <activity android:name=".RejestracjaDomostwa"></activity>
     </application>
 
 </manifest>

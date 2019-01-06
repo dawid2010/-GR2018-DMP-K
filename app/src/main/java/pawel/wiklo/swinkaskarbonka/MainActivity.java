@@ -45,8 +45,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d("DebugLog","1");
     }
 
+    public void goToWykresy(View view) {
+        Intent intent = new Intent(this, ChartsView.class);
+        startActivity(intent);
+    }
 
-private class WebServiceHandler extends AsyncTask<String, Void, String> {
+
+    private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
     // okienko dialogowe, które każe użytkownikowi czekać
     private ProgressDialog dialog = new ProgressDialog(MainActivity.this);
