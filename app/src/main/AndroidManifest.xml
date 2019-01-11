@@ -12,19 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".addIncome"/>
-
-        <activity android:name=".ChartsView" >
-
-    </activity>
+        <activity android:name=".addIncome" />
+        <activity android:name=".ChartsView"></activity>
         <activity android:name=".BarchartIncome" />
         <activity android:name=".BarchartExpenses" />
         <activity android:name=".PiechartIncome" />
-        <activity android:name=".PiechartExpenses">
-
-
-
-        </activity>
+        <activity android:name=".PiechartExpenses"></activity>
         <activity android:name=".dodawanieWydatkow" />
         <activity android:name=".zarzadzanieWydatkami" />
         <activity android:name=".Logowanie">
@@ -36,7 +29,10 @@
             />
         </activity>
         <activity android:name=".Rejestracja" />
-        <activity android:name=".RejestracjaDomostwa"></activity>
+        <activity android:name=".RejestracjaDomostwa" />
+        <activity android:name=".GetUserList">
+
+        </activity>
     </application>
 
 </manifest>

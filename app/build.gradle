@@ -29,4 +29,6 @@ dependencies {
     //Chart library
     implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+
 }
