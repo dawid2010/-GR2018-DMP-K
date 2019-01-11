@@ -50,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToUserList(View view) {
+        Intent intent = new Intent(this, GetUserList.class);
+        startActivity(intent);
+    }
+
+    public void getWydatek(View view) {
+    }
+
 
     private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
