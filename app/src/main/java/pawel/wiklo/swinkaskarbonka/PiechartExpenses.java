@@ -27,6 +27,11 @@ public class PiechartExpenses extends AppCompatActivity {
         kwoty.add(new BarEntry(700f, 2));
         kwoty.add(new BarEntry(800f, 3));
         kwoty.add(new BarEntry(300f, 4));
+        kwoty.add(new BarEntry(700f, 5));
+        kwoty.add(new BarEntry(600f, 6));
+        kwoty.add(new BarEntry(800f, 7));
+        kwoty.add(new BarEntry(100f, 8));
+        kwoty.add(new BarEntry(1100f, 9));
         PieDataSet dataSet = new PieDataSet(kwoty, "Wydatki miesiąc");
 
 
@@ -37,6 +42,11 @@ public class PiechartExpenses extends AppCompatActivity {
         wydatki.add("Uczelnia");
         wydatki.add("Jedzenie");
         wydatki.add("Rozrywka");
+        wydatki.add("Telefon");
+        wydatki.add("Telewizja");
+        wydatki.add("Komputer");
+        wydatki.add("Praca");
+        wydatki.add("Dom");
 
 
 

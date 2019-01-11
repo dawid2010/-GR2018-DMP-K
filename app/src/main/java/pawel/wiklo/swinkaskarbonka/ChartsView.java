@@ -12,6 +12,10 @@ public class ChartsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charts_view);
     }
+    public void goToWykresy(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void barchartIncome(View view) {
         Intent intent = new Intent(this, BarchartIncome.class);
