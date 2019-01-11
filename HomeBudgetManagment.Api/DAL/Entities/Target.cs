@@ -7,5 +7,8 @@ namespace HomeBudgetManagment.Api.DAL.Entities
 {
     public class Target
     {
+
+        public int Id { get; set; }
+        public string Description { get; set; }
     }
 }

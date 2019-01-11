@@ -9,6 +9,8 @@ namespace HomeBudgetManagment.Api.DAL.Entities
     {
         public int Id { get; set; }
         public double IncomeValue { get; set; }
+
         public virtual IncomeType IncomeType { get; set; }
+        public virtual User User { get; set; }
     }
 }

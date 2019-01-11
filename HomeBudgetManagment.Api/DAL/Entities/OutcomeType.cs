@@ -7,5 +7,9 @@ namespace HomeBudgetManagment.Api.DAL.Entities
 {
     public class OutcomeType
     {
+        public int Id { get; set; }
+        public int Description { get; set; }
+ 
+
     }
 }

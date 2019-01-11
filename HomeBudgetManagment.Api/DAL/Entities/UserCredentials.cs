@@ -12,7 +12,7 @@ namespace HomeBudgetManagment.Api.DAL.Entities
 
         public string Password { get; set; }
 
-        public virtual UserInfo UserInfo { get; set; }
+        public virtual User UserInfo { get; set; }
 
 
     }

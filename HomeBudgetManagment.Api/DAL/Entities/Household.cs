@@ -11,8 +11,5 @@ namespace HomeBudgetManagment.Api.DAL.Entities
         public string Code { get; set; }
         public string Description { get; set; }
         public ICollection<User> Users { get; set; }
-
-
-
     }
 }
