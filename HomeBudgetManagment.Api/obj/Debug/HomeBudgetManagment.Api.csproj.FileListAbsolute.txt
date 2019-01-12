@@ -1,0 +1,4 @@
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.Api\obj\Debug\HomeBudgetManagment.Api.csprojAssemblyReference.cache
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.Api\obj\Debug\HomeBudgetManagment.Api.csproj.CoreCompileInputs.cache
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.Api\obj\Debug\HomeBudgetManagment.Api.dll
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.Api\obj\Debug\HomeBudgetManagment.Api.pdb
