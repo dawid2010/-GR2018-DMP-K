@@ -8,5 +8,8 @@ namespace HomeBudgetManagment.DTO
 {
     public class UserInfoDTO
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public virtual UserDTO User { get; set; }
     }
 }

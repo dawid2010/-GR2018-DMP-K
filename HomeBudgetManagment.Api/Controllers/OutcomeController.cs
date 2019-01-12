@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HomeBudgetManagment.Api.DAL;
+using HomeBudgetManagment.Api.DAL.Entities;
 using HomeBudgetManagment.Api.Models.Interfaces;
 using HomeBudgetManagment.DTO;
 using System;
@@ -34,7 +35,7 @@ namespace HomeBudgetManagment.Api.Controllers
                 else
                 {
                     var dto = mapper.Map<OutcomeDTO>(outcome);
-                    return Ok(dto);
+                    return Json(dto);
                 }    
             }
                 
@@ -43,13 +44,41 @@ namespace HomeBudgetManagment.Api.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult GetOutcomes()
         {
             using (var ctx = new HomeBudgetDbContext())
             {
                 var outcomes = ctx.Outcomes.ToList();
                 var dto = mapper.Map<List<OutcomeDTO>>(outcomes);
-                return Ok(dto);
+                return Json(dto);
+            }
+
+        }
+
+        [HttpPost]
+        public void AddOutcome([FromBody]OutcomeDTO outcomeDTO)
+        {
+            using (var context = new HomeBudgetDbContext())
+            {
+                var entity = mapper.Map<Outcome>(outcomeDTO);
+                context.Outcomes.Add(entity);
+                context.SaveChanges();
+            }
+
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult AddOutcomeToUser(int UserId, [FromBody] OutcomeDTO outcomeDTO)
+        {
+
+            using (var context = new HomeBudgetDbContext())
+            {
+                var user = context.Users.FirstOrDefault(x => x.Id == UserId);
+                var outcomeToAdd = mapper.Map<Outcome>(outcomeDTO);
+                user.Outcomes.Add(outcomeToAdd);
+                context.SaveChanges();
+                return Json(outcomeDTO);
             }
 
         }

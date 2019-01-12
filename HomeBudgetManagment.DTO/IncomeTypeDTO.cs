@@ -8,5 +8,7 @@ namespace HomeBudgetManagment.DTO
 {
     public class IncomeTypeDTO
     {
+        public int Id { get; set; }
+        public string Description { get; set; }
     }
 }

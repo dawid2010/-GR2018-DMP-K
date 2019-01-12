@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HomeBudgetManagment.Api.DAL;
+using HomeBudgetManagment.Api.DAL.Entities;
 using HomeBudgetManagment.Api.Models.Interfaces;
 using HomeBudgetManagment.DTO;
 using System;
@@ -33,13 +34,50 @@ namespace HomeBudgetManagment.Api.Controllers
                 else
                 {
                     var dto = mapper.Map<IncomeDTO>(income);
-                    return Ok(dto);
+                    return Json(dto);
                 }
             }
 
         }
+        [HttpGet]
+        public IHttpActionResult GetIncomes()
+        {
+            using (var context = new HomeBudgetDbContext())
+            {
+                var incomes = context.Incomes.ToList();
+                var dto = mapper.Map<List<IncomeDTO>>(incomes);
+                return Json(dto);
+            }
 
 
+        }
+
+        [HttpPost]
+        public IHttpActionResult AddIncome([FromBody] IncomeDTO incomeDTO)
+        {
+            using (var context = new HomeBudgetDbContext())
+            {
+                var entity = mapper.Map<Income>(incomeDTO);
+                context.Incomes.Add(entity);
+                return Json(entity);
+
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult AddIncomeToUser(int UserId,[FromBody] IncomeDTO incomeDTO)
+        {
+
+            using (var context = new HomeBudgetDbContext())
+            {
+                var user = context.Users.FirstOrDefault(x => x.Id == UserId);
+                var incomeToAdd = mapper.Map<Income>(incomeDTO);
+                user.Incomes.Add(incomeToAdd);
+                context.SaveChanges();
+                return Json(incomeDTO);
+            }
+
+        }
 
     }
 }

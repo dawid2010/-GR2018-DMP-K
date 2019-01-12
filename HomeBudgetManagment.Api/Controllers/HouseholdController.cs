@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HomeBudgetManagment.Api.DAL;
 using HomeBudgetManagment.Api.Models.Interfaces;
 using HomeBudgetManagment.DTO;
 using System;
@@ -21,11 +22,33 @@ namespace HomeBudgetManagment.Api.Controllers
             mapper = cfg.CreateMapper(); 
         }
         [HttpGet]
-        public HouseholdDTO GetHousehold(int Id)
+        public IHttpActionResult GetHousehold(int Id)
         {
+            using (var context = new HomeBudgetDbContext())
+            {
+                var entity = context.Households.FirstOrDefault(x => x.Id == Id);
+                if(entity == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var dto = mapper.Map<HouseholdDTO>(entity);
+                    return Json(dto);
+                }
+            }
 
+        }
+        [HttpGet]
+        public IHttpActionResult GetHouseholds()
+        {
+            using (var context = new HomeBudgetDbContext())
+            {
+                var households = context.Households.ToList();
+                var dto = mapper.Map<List<HouseholdDTO>>(households);
+                return Json(dto);
 
-            return null;
+            }
         }
 
 

@@ -8,5 +8,10 @@ namespace HomeBudgetManagment.DTO
 {
     public class UserCredentialsDTO
     {
+        public string Login { get; set; }
+
+        public string Password { get; set; }
+
+        public virtual UserDTO User { get; set; }
     }
 }
