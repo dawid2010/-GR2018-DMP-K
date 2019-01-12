@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(title='Add training')"></head>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<div class="container">
+    <h1 class="text-center pb-3">Przychody</h1>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-lg-3 my-1"><button id="all-button" type="button" class="btn btn-outline-checked btn-block">Wszystkie</button></div>
+            <div class="col-lg-3 my-1"><button id="bronze-button" type="button" class="btn btn-outline-secondary btn-block">Praca</button></div>
+            <div class="col-lg-3 my-1"><button id="silver-button" type="button" class="btn btn-outline-secondary btn-block">Zasiłek</button></div>
+            <div class="col-lg-3 my-1"><button id="gold-button" type="button" class="btn btn-outline-secondary btn-block">Lokata</button></div>
+        </div>
+    </div>
+
+    <div class="d-none d-lg-block mt-5">
+        <div class="row h-100 table-header shadow noselect border rounded text-center">
+            <div class="col-md-3 col-sm-1 my-auto mx-auto font-weight-bold">Nazwa</div>
+            <div class="col-md-5 col-sm-1 my-auto mx-auto font-weight-bold">Wartość</div>
+            <div class="col-md-1 col-sm-1 my-auto mx-auto font-weight-bold">Typ</div>
+            <div class="col-md-3 col-sm-1 my-auto mx-auto font-weight-bold">Operacje</div>
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-4">
+        <div class="row">
+            <div class="col-lg-4 mx-auto">
+                <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn btn-outline-secondary btn-block">Dodaj nowy przychód</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row table-row border rounded border-secondary noselect py-2 px-2 mb-3 shadow-sm text-lg-center text-center"
+         style="cursor: default;"
+         th:each="income : ${incomes}">
+
+        <div class="col-md-12 col-sm-12 d-lg-none">
+            <div class="font-weight-bold text-md-center text-sm-center" th:text="#{simple.name}"></div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 my-auto text-md-center text-sm-center"
+             th:text="${income.name}"></div>
+
+        <div class="w-100 my-1 d-lg-none"></div>
+
+        <div class="col-md-12 col-sm-12 d-lg-none">
+            <div class="font-weight-bold text-md-center text-sm-center" th:text="#{simple.description}"></div>
+        </div>
+        <div class="col-lg-5 col-md-12 col-sm-12 my-auto text-md-center text-sm-center"
+             th:text="${income.value}"></div>
+
+        <div class="w-100 my-1 d-lg-none"></div>
+
+        <div class="col-md-12 col-sm-12 d-lg-none">
+            <div class="font-weight-bold text-md-center text-sm-center" th:text="#{simple.type}"></div>
+        </div>
+        <div class="col-lg-1 col-md-12 col-sm-12 my-auto text-md-center text-sm-center"
+             th:text="${income.type.displayName}"></div>
+
+        <div class="w-100 my-1 d-lg-none"></div>
+
+        <div class="col-md-12 col-sm-12 d-lg-none">
+            <div class="font-weight-bold text-md-center text-sm-center"></div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 pl-4 my-auto text-md-center text-sm-center">
+        </div>
+
+        <div class="w-100 my-1 d-lg-none"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Dodaj nowy przychód</h5>
+            </div>
+            <form th:action="@{/budget/income/add}" method="POST" th:object="${income}">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-sm-10 col-10 mx-auto text-center">
+                                <div class="form-group text-center my-4">
+                                    <input type="hidden" name="id" th:field="*{id}">
+                                    <input class="form-control" autocomplete="off" type="text" name="name" id="name" th:field="*{name}" placeholder="Nazwa">
+                                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"/>
+                                </div>
+                                <div class="form-group text-center my-4">
+                                    <label for="value">Wartość</label>
+                                    <input type="number" class="form-control" name="value" id="value" th:field="*{value}">
+                                    <p th:each="err : ${#fields.errors('value')}" th:text="${err}"/>
+                                </div>
+                                <div class="form-group text-center my-4">
+                                    <select class="form-control shadow-sm text-center" name="type" id="type" th:field="*{type}">
+                                        <option value="BRONZE">Praca</option>
+                                        <option value="SILVER">Zasiłek</option>
+                                        <option value="GOLD">Lokata</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary shadow" data-dismiss="modal">Zamknij</button>
+                    <button type="submit" class="btn btn-success shadow " th:text="#{button.save}"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<a style="cursor:pointer; height:0px; width:0px;" id="return-to-top"><i class="icon-chevron-up"></i></a>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/main_scripts :: main_scripts"></div>
+<script src="/js/returnTop.js"></script>
+<script src="/js/filteringTrainingTemplatesDochody.js"></script>
+<script th:inline="javascript">
+    if([[${formError}]]){
+        $('#exampleModalCenter').modal('show')
+    }
+</script>
+</body>
+</html>

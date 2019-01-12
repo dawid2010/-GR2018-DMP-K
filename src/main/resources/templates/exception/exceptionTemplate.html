@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(title = ${title})"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<div class="container h-100 mb-5">
+    <div class="row align-items-center h-35 my-3">
+    </div>
+    <div class="row align-items-center h-65">
+        <div class="col-lg-7 col-md-8  col-sm-10 mx-auto">
+            <div class="card rounded h-100 border justify-content-center shadow grey-background-color">
+                <div class="row mt-5 mb-3">
+                    <div class="col-lg-10 col-sm-10 col-10 mx-auto text-center">
+                        <i class="fas fa-exclamation-triangle fa-8x i-shadow"></i>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-lg-10 col-sm-10 col-10 mx-auto text-center">
+                        <h2 th:text="'ERROR: ' + ${errorCode}"></h2>
+                        <h4 class="mt-4" th:text="${message}"></h4>
+                        <h4 class="mt-4" th:text="${previousPageURL}"></h4>
+                        <a href="/" class="btn btn-dark">Back to home  <i class="fas fa-home"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/main_scripts :: main_scripts"></div>
+</body>
+</html>

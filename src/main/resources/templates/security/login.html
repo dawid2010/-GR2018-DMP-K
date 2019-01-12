@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(title='Login')"></head>
+<body id="full-height-body">
+
+
+<div class="container h-90">
+    <div class="row align-items-center h-35">
+        <div class="col-lg-2 col-md-1 col-sm-2 col-3 mx-auto">
+            <div class="h-100 justify-content-center">
+                <img class="img-fluid mt-5 mb-4" th:src="@{/img/piggy_logo.jpg}" alt="logo">
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center h-65">
+        <div class="col-lg-5 mx-auto">
+            <div class="card h-100 border justify-content-center shadow grey-background-color">
+                <form th:action="@{/login}" method="post">
+                    <div class="container p-5">
+                        <div class="row mb-0">
+                            <div class="col-lg-12 text-center">
+                                <h1 class="noselect">PIGGY BANK</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10 col-sm-10 col-10 mx-auto text-center">
+                                <div class="form-group text-center m-0">
+                                    <label style="visibility:hidden;" id="username-label" class="non-active text-center m-0 noselect"
+                                           for="username">Login</label>
+                                    <input class="form-control" autocomplete="off" type="text" id="username" name="username" placeholder="Login"/>
+                                </div>
+                                <div class="form-group text-center mt-0">
+                                    <label style="visibility:hidden;" id="password-label" class="non-active text-center m-0 noselect" for="password">Hasło</label>
+                                    <input class="form-control" type="password" id="password" name="password" placeholder="Hasło"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4 button-on">
+                            <div class="col-lg-4 col-sm-4 col-4 mx-auto text-center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-dark btn-block">Zaloguj</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4 mb-4 loader-off" style="display:none;">
+                            <div class="col-lg-4 col-sm-4 col-4 mx-auto">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto text-center">
+                                <h5><a th:href="@{/register}">Załóż konto</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center h-35"
+         th:if="${param.error}"
+         th:with="sessionError=(${session['SPRING_SECURITY_LAST_EXCEPTION']}),resendEmailErrorCode=('org.springframework.security.authentication.InternalAuthenticationServiceException')">
+        <div class="col-lg-5 mx-auto">
+            <div class="h-100 justify-content-center text-center">
+                <div class="alert alert-danger mt-4 shadow greyed-red shadow-text" role="alert">
+                <div class="error m-0 p-0">
+                    <span th:text="${sessionError.message}"></span>
+                    <span th:if="${#strings.equals(#strings.arraySplit(#strings.toString(sessionError),':')[0],resendEmailErrorCode)}">
+                                                    <a th:href="@{/register/confirm/resend}"
+                                                       th:text="#{email.register.confirmation.resend.link}"></a>
+                                                </span>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center h-35">
+        <div class="col-lg-5 mt-4 mx-auto text-center">
+            <div th:if=${messageSuccess} class="alert alert-success shadow greyed-green shadow-text" th:text="#{${messageSuccess}}" role="alert">
+            </div>
+            <div th:if=${messageFailure} class="alert alert-danger shadow greyed-red shadow-text" th:text="#{${messageFailure}}" role="alert">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/main_scripts :: main_scripts"></div>
+<script src="/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(title='Resend confirmation email')"></head>
+<body>
+<form th:action="@{/register/confirm/resend}" method="post">
+    <label for="email" th:text="#{email.register.confirmation.resend.description}"></label>
+    <input type="text" name="email" id="email">
+    <p th:if="${errors}" th:each="error : ${errors}" th:text="#{${error.value}}"/>
+    <a th:href="@{/}">
+        <button type="button" th:text="#{button.reject}"></button>
+    </a>
+    <button type="submit" th:text="#{button.resend}"></button>
+</form>
+</body>
+</html>

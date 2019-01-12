@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-light bg-light navbar-custom">
+    <a class="navbar-brand" th:href="@{/}">
+        <span>PIGGY BANK</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Budżet
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" th:href="@{/budget/outcome/all}">Wydatki</a>
+                    <!--<a class="dropdown-item" th:href="@{/user/all/0}">User accounts</a>-->
+                    <a class="dropdown-item" th:href="@{/budget/income/all}">Przychody</a>
+                </div>
+            </div>
+            </th:block>
+        </ul>
+        <th:block sec:authorize="hasRole('ROLE_USER')">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" data-placement="bottom" title="Wyloguj"  th:href="@{/logout}">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                </li>
+            </ul>
+        </th:block>
+    </div>
+</nav>
+
+</body>
+</html>

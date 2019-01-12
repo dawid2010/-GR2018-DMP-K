@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center;" th:fragment="pagination_controller">
+
+    <nav aria-label="Page navigation" id="pagination-nav" class="mt-5">
+        <ul class="pagination justify-content-center pagination-lg">
+            <li th:class="(${page} ne 0)?'page-item noselect':'page-item disabled noselect'">
+                <a th:href="@{0}" class="page-link" th:text="'First'"></a>
+            </li>
+            <li th:class="(${page} > 0)?'page-item noselect':'page-item disabled noselect'">
+                <a th:href="@{__${page}__-1}" class="page-link" th:text="'Previous'"></a>
+            </li>
+            <li class="page-item disabled">
+                <p th:text="${page}" class="page-link noselect"></p>
+            </li>
+            <li th:class="(${page} < ${totalPages}-1)?'page-item noselect':'page-item disabled noselect'">
+                <a th:href="@{__${page}__+1}" class="page-link" th:text="'Next'"></a>
+            </li>
+            <li th:class="(${page} ne ${totalPages}-1)?'page-item noselect':'page-item disabled noselect'">
+                <a th:href="@{__${totalPages-1}__}" class="page-link" th:text="'Last'"></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

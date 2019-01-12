@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(title='Register')"></head>
+<body id="full-height-body">
+<div class="container h-100" th:object="${person}" th:with="loginErrors=${#fields.errors('login')}">
+    <div class="row align-items-center h-35">
+        <div class="col-lg-1 col-md-1 col-sm-2 col-3 mx-auto">
+            <div class="h-100 justify-content-center">
+                <img class="img-fluid mt-5 mb-4" th:src="@{/img/ericsson_logo.png}" alt="logo">
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center h-65">
+        <div class="col-lg-6 mx-auto">
+            <div class="card h-100 border justify-content-center shadow grey-background-color">
+                <form th:action="@{/register}" method="POST" th:object="${person}">
+                    <div class="container p-5">
+                        <div class="row mb-4">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8 text-center">
+                                <h1 class="text-center" th:text="#{title.registration}"></h1>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group text-center">
+                                    <input class="form-control" type="text" autocomplete="off" name="login" id="login" th:field="*{login}"
+                                           placeholder="Login">
+                                    <p th:each="err : ${#fields.errors('login')}"
+                                       th:with="signumCharactersMessage=#{error.person.login.syntax}"
+                                       th:text="${#lists.contains(loginErrors, signumCharactersMessage)} ? ${err}"></p>
+                                </div>
+                                <div class="form-group text-center ">
+                                    <input class="form-control py-2" type="password" name="password" id="password"
+                                           th:field="*{password}"
+                                           th:placeholder="#{person.password}+' (min. 8 characters)'">
+                                    <p th:each="err : ${#fields.errors('password')}" th:text="${err}"/>
+                                </div>
+                                <div class="form-group text-center ">
+                                    <input class="form-control" type="password" name="match_password"
+                                           id="match_password"
+                                           th:field="*{matchPassword}"
+                                           th:placeholder="#{person.matchPassword}">
+                                    <p th:each="err : ${#fields.errors('matchPassword')}"
+                                       th:with="passwordMatchMessage=#{error.person.matchPassword}"
+                                       th:text="not ${#lists.contains(#fields.errors('password'), passwordMatchMessage)} ? ${err}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-dark btn-block mt-4"  type="submit"
+                                            th:text="#{button.register}"></button>
+                                </div>
+                                <a th:href="@{/login}"><h5 th:text="#{label.backToLogin}"></h5></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center h-35" th:if="${#fields.hasErrors('login')}"
+         th:with="signumCharactersMessage=#{error.person.login.syntax}">
+        <div class="col-lg-6 mx-auto" th:if="not ${#lists.contains(loginErrors, signumCharactersMessage)}">
+            <div class="h-100 justify-content-center">
+                <div class="alert alert-danger mt-4 shadow greyed-red text-center shadow-text" role="alert">
+
+                    <th:block th:with="accountAlreadyExistsMessage=#{error.person.login.same}"
+                              th:text="${#lists.contains(loginErrors, accountAlreadyExistsMessage)} ? #{error.alert.register.accountAlreadyExists}">
+                    </th:block>
+
+                    <th:block th:with="accountNotExistsMessage=#{error.person.login.notFound}"
+                              th:text="${#lists.contains(loginErrors, accountNotExistsMessage)} ? #{error.alert.register.accountNotExists}">
+                    </th:block>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/main_scripts :: main_scripts"></div>
+<script src="/js/register.js"></script>
+</body>
+</html>
