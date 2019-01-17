@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HomeBudgetManagment.Api.DAL;
 using HomeBudgetManagment.Api.DAL.Entities;
+using HomeBudgetManagment.Api.Models.Implementations;
 using HomeBudgetManagment.Api.Models.Interfaces;
 using HomeBudgetManagment.DTO;
 using System;
@@ -16,8 +17,9 @@ namespace HomeBudgetManagment.Api.Controllers
     {
         IMapper mapper;
       
-        public OutcomeController(IMapperConfProvider confProvider)
+        public OutcomeController()
         {
+            var confProvider = new MapperConfProvider();
             var cfg = confProvider.ProvideMapperConfiguration();
             mapper = cfg.CreateMapper();
 

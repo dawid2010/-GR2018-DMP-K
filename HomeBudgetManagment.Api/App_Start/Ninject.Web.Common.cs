@@ -5,7 +5,8 @@ namespace HomeBudgetManagment.Api.App_Start
 {
     using System;
     using System.Web;
-
+    using HomeBudgetManagment.Api.Models.Implementations;
+    using HomeBudgetManagment.Api.Models.Interfaces;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -61,6 +62,9 @@ namespace HomeBudgetManagment.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IMapperConfProvider>().To<MapperConfProvider>();
+
+
         }        
     }
 }

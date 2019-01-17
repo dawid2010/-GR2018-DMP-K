@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HomeBudgetManagment.Api.DAL;
 using HomeBudgetManagment.Api.DAL.Entities;
+using HomeBudgetManagment.Api.Models.Implementations;
 using HomeBudgetManagment.Api.Models.Interfaces;
 using HomeBudgetManagment.DTO;
 using System;
@@ -15,8 +16,9 @@ namespace HomeBudgetManagment.Api.Controllers
     public class IncomeController : ApiController
     {
         IMapper mapper;
-        public IncomeController(IMapperConfProvider confProvider)
+        public IncomeController()
         {
+           var confProvider = new MapperConfProvider();
             var cfg = confProvider.ProvideMapperConfiguration();
             mapper = cfg.CreateMapper();
         }

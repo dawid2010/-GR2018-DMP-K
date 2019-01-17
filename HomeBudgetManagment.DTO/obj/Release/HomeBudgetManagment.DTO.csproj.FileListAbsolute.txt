@@ -1,0 +1,6 @@
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\bin\Release\HomeBudgetManagment.DTO.dll
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\bin\Release\HomeBudgetManagment.DTO.pdb
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\obj\Release\HomeBudgetManagment.DTO.csprojAssemblyReference.cache
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\obj\Release\HomeBudgetManagment.DTO.csproj.CoreCompileInputs.cache
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\obj\Release\HomeBudgetManagment.DTO.dll
+C:\Users\Mychalyson\Source\Repos\dawid2010\GR2018-DMPLK\HomeBudgetManagment.DTO\obj\Release\HomeBudgetManagment.DTO.pdb
