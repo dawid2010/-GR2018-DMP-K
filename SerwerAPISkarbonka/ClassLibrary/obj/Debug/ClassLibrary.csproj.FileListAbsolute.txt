@@ -1,0 +1,12 @@
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\ClassLibrary.dll.config
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\ClassLibrary.dll
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\ClassLibrary.pdb
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\EntityFramework.dll
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\EntityFramework.xml
+D:\api\SerwerAPISkarbonka\ClassLibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\api\SerwerAPISkarbonka\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+D:\api\SerwerAPISkarbonka\ClassLibrary\obj\Debug\ClassLibrary.csproj.CopyComplete
+D:\api\SerwerAPISkarbonka\ClassLibrary\obj\Debug\ClassLibrary.dll
+D:\api\SerwerAPISkarbonka\ClassLibrary\obj\Debug\ClassLibrary.pdb
+D:\api\SerwerAPISkarbonka\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache

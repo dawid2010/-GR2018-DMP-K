@@ -1,0 +1,11 @@
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\AddDB.dll.config
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\AddDB.dll
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\AddDB.pdb
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\EntityFramework.dll
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\EntityFramework.SqlServer.dll
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\EntityFramework.xml
+D:\api\SerwerAPISkarbonka\AddDB\bin\Debug\EntityFramework.SqlServer.xml
+D:\api\SerwerAPISkarbonka\AddDB\obj\Debug\AddDB.csproj.CoreCompileInputs.cache
+D:\api\SerwerAPISkarbonka\AddDB\obj\Debug\AddDB.csproj.CopyComplete
+D:\api\SerwerAPISkarbonka\AddDB\obj\Debug\AddDB.dll
+D:\api\SerwerAPISkarbonka\AddDB\obj\Debug\AddDB.pdb
