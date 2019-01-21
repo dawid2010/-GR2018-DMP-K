@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getData(View view) {
-        new WebServiceHandler().execute("https://jsonplaceholder.typicode.com/todos/1");
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome?fbclid=IwAR056d1tqD9otgE5QqYoPm89rgJY1oaP55kRDmOloroDQYw8F_uwuq-1LSA");
         Log.d("DebugLog","1");
     }
 
@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getWydatek(View view) {
+        //Intent intent = new Intent(this, addIncome.class);
+        Intent intent = new Intent(this, dodawanieWydatkow.class);
+        startActivity(intent);
     }
 
 

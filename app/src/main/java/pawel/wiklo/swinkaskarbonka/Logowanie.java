@@ -15,7 +15,7 @@ public class Logowanie extends AppCompatActivity {
     TextView info;
 
     public void logowanie(View view) {
-        if(email.getText().toString().equals("test@test.pl") && password.getText().toString().equals("test123")) {
+        if(email.getText().toString().equals("1") && password.getText().toString().equals("1")) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
