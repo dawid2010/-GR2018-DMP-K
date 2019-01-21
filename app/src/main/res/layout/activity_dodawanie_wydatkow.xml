@@ -37,7 +37,8 @@
         app:barrierDirection="left" />
 
     <EditText
-        android:id="@+id/editText"
+        android:hint="YYYY-M-DD"
+        android:id="@+id/editTextData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -48,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextNazwa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -56,10 +57,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextData" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextKwota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -67,20 +68,21 @@
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/barrier"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNazwa" />
 
     <Button
+        android:onClick="kwotaButton"
         android:id="@+id/button8"
         android:layout_width="213dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="32dp"
-        android:text="Skan OCR kwoty"
+        android:text="Dodaj"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextKwota" />
 
     <ListView
         android:id="@+id/listview"
@@ -100,7 +102,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:text="Typ wydatku:"
+        android:text="Poprzednie wydatki:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +120,7 @@
         android:layout_marginEnd="24dp"
         android:text="Kwota:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintEnd_toStartOf="@+id/editTextKwota"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -132,7 +134,7 @@
         android:layout_marginEnd="24dp"
         android:text="Nazwa:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNazwa"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -146,11 +148,12 @@
         android:layout_marginEnd="24dp"
         android:text="Data:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/editTextData"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+    <!--
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="208dp"
@@ -159,5 +162,5 @@
         android:text="Wydatek stały"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
-
+-->
 </android.support.constraint.ConstraintLayout>
