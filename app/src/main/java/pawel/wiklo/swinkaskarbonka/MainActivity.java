@@ -75,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void logout(View view) {
+        Intent intent = new Intent(this, Logowanie.class);
+        startActivity(intent);
+    }
+
+    public void goToSkarbonka(View view) {
+        Intent intent = new Intent(this, Skarbonka.class);
+        startActivity(intent);
+    }
+
 
     private class WebServiceHandler extends AsyncTask<String, Void, String> {
 

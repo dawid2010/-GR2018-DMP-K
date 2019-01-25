@@ -123,7 +123,7 @@ public class BarchartExpenses extends AppCompatActivity {
                 bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
                 chart.setData(data);
 
-                chart.setDescription("Wydatki na miesiac grudzien");
+                chart.setDescription("Wydatki");
 
 
 

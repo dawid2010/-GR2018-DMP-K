@@ -217,7 +217,7 @@ public class dodawaniePrzychodu extends AppCompatActivity {
 
                 arrayList = new ArrayList<>();
 
-                for(int i = 1;i<json.length();i++)
+                for(int i = 0;i<json.length();i++)
                 {
                     Log.d("JON1",json.getJSONObject(i).toString());
                     Log.d("JON1",json.getJSONObject(i).getString("name"));

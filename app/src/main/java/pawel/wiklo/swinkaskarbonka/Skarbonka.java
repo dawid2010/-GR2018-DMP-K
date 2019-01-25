@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,14 +27,14 @@ import java.util.ArrayList;
 
 import static pawel.wiklo.swinkaskarbonka.Logowanie.GLOBAL_ACCOUNT_ID;
 
-public class dodawanieWydatkow extends AppCompatActivity {
+public class Skarbonka extends AppCompatActivity {
 
     ListView listView;
     ArrayList<String> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dodawanie_wydatkow);
+        setContentView(R.layout.activity_skarbonka);
         listView=(ListView)findViewById(R.id.listview);
 
         arrayList = new ArrayList<>();
@@ -47,7 +46,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
 
 
-        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome/"+GLOBAL_ACCOUNT_ID+"?a=1");
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/goals/"+GLOBAL_ACCOUNT_ID+"?a=1");
         Log.d("DebugLog","1");
 
 
@@ -77,15 +76,17 @@ public class dodawanieWydatkow extends AppCompatActivity {
             public void run() {
                 try {
                     EditText EditTextData = findViewById(R.id.editTextData);
+                    EditText EditTextDataEnd = findViewById(R.id.editTextDataEnd);
                     EditText EditTextNazwa = findViewById(R.id.editTextNazwa);
                     EditText EditTextKwota = findViewById(R.id.editTextKwota);
 
                     String Data = EditTextData.getText().toString();
+                    String DataEnd = EditTextDataEnd.getText().toString();
                     String Nazwa = EditTextNazwa.getText().toString();
                     String Kwota = EditTextKwota.getText().toString();
 
-                    String urlCustom = "http://swinkaskarbonka.somee.com/api/Outcome?value="+Kwota+"&name="+Nazwa+"&account_id="+GLOBAL_ACCOUNT_ID+"&data="+Data;
-
+                    String urlCustom = "http://swinkaskarbonka.somee.com/api/goals?value="+Kwota+"&name="+Nazwa+"&account_id="+GLOBAL_ACCOUNT_ID+"&data="+Data+"&date_end="+DataEnd;
+                    Log.d("JON1",urlCustom);
                     //URL url = new URL("http://swinkaskarbonka.somee.com/api/Outcome?value=650&name=studia&account_id=1&data=2019-01-21");
                     URL url = new URL(urlCustom);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -141,7 +142,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
     private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
         // okienko dialogowe, które każe użytkownikowi czekać
-        private ProgressDialog dialog = new ProgressDialog(dodawanieWydatkow.this);
+        private ProgressDialog dialog = new ProgressDialog(Skarbonka.this);
 
         // metoda wykonywana jest zaraz przed główną operacją (doInBackground())
         // mamy w niej dostęp do elementów UI
@@ -207,15 +208,34 @@ public class dodawanieWydatkow extends AppCompatActivity {
 
                 JSONArray json = new JSONArray(result);
 
+
                 //TextView tv = ((TextView) findViewById(R.id.texvView));
                 //tv.setText(exampleuserId+"\n"+exampleId+"\n"+exampleTitle+"\n"+exampleCompleted);
                 //tv.setText(json.toString());
 
                 //json.getJSONObject(1).toString();
-                Log.d("JON1",json.getJSONObject(1).toString());
-                Log.d("JON1",json.getJSONObject(2).toString());
+                Log.d("test0",json.getJSONObject(0).toString());
+                Log.d("test01",json.getJSONObject(0).getString("name"));
+                Log.d("test1", String.valueOf(json.length()));
+
 
                 arrayList = new ArrayList<>();
+
+                if(json.length()==1)
+                {
+                    JSONObject json_obj = json.getJSONObject(0);
+                    Log.d("test11","enterIf");
+                    JSONObject json_obj2 = json.getJSONObject(1);
+                    Log.d("test11",json_obj2.toString());
+
+                    String name = json.getJSONObject(0).getString("name");
+                    int value = json.getJSONObject(0).getInt("value");
+                    String data = json.getJSONObject(0).getString("date");
+                    String dataEnd = json.getJSONObject(0).getString("date_end");
+                    dataEnd = "a";
+                    //arrayList.add(name+" - "+value+" - "+data+" - "+dataEnd );
+                    arrayList.add(name);
+                }
 
                 for(int i = 0;i<json.length();i++)
                 {
@@ -225,7 +245,9 @@ public class dodawanieWydatkow extends AppCompatActivity {
                     String name = json.getJSONObject(i).getString("name");
                     int value = json.getJSONObject(i).getInt("value");
                     String data = json.getJSONObject(i).getString("date");
-                    arrayList.add(name+" - "+value+" - "+data);
+                    String dataEnd = json.getJSONObject(i).getString("date_end");
+                    arrayList.add(name+" - "+value+" - "+data+" - "+dataEnd );
+                    //arrayList.add(name+" - "+value+" - "+data );
                 }
 
                 //arrayList = new ArrayList<>();
@@ -239,7 +261,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
 
             } catch (Exception e) {
                 // obsłuż wyjątek
-                Log.d(GetUserList.class.getSimpleName(), e.toString());
+                Log.d(Skarbonka.class.getSimpleName(), e.toString());
                 Log.d("DebugLog","failed");
             }
         }

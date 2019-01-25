@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".dodawanieWydatkow">
+    tools:context=".Skarbonka">
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -15,7 +16,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/strata" />
+        app:srcCompat="@drawable/skarbonka" />
 
     <TextView
         android:id="@+id/textView6"
@@ -24,7 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Dodawanie wydatków"
+        android:text="Cele"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -37,13 +38,25 @@
         app:barrierDirection="left" />
 
     <EditText
-        android:hint="YYYY-MM-DD"
         android:id="@+id/editTextData"
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="148dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
         android:ems="10"
+        android:hint="YYYY-MM-DD"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/editTextDataEnd"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="YYYY-MM-DD"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -70,19 +83,6 @@
         app:layout_constraintEnd_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/editTextNazwa" />
 
-    <Button
-        android:id="@+id/ocrButton"
-        android:layout_width="93dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:onClick="ocrButton"
-        android:text="OCR"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextKwota" />
     <Button
         android:onClick="kwotaButton"
         android:id="@+id/button8"
@@ -159,7 +159,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Data:"
+        android:text="Data od - do:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintEnd_toStartOf="@+id/editTextData"
         app:layout_constraintHorizontal_bias="0.954"

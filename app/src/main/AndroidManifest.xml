@@ -37,7 +37,8 @@
         <activity
             android:name=".OcrCaptureActivity"
             android:label="Read Text" />
-        <activity android:name=".dodawaniePrzychodu"></activity>
+        <activity android:name=".dodawaniePrzychodu" />
+        <activity android:name=".Skarbonka"></activity>
     </application>
 
 </manifest>

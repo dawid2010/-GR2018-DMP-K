@@ -36,6 +36,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static pawel.wiklo.swinkaskarbonka.Logowanie.GLOBAL_ACCOUNT_ID;
+
 public class GetUserList extends AppCompatActivity {
 
     @Override
@@ -45,12 +47,10 @@ public class GetUserList extends AppCompatActivity {
 
         setTitle("User list");
 
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Skarbonka?fbclid=IwAR2lTNB_fakviS0lFeYGLFXuoJYv2-xRGEn0aA_yN9z0QyQ6bh-QmtqFsy8");
 
     }
-    public void getJson(View view) {
-        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Skarbonka?fbclid=IwAR2lTNB_fakviS0lFeYGLFXuoJYv2-xRGEn0aA_yN9z0QyQ6bh-QmtqFsy8");
-        Log.d("DebugLog","1");
-    }
+
     private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
         // okienko dialogowe, które każe użytkownikowi czekać
@@ -122,7 +122,26 @@ public class GetUserList extends AppCompatActivity {
 
                 TextView tv = ((TextView) findViewById(R.id.texvView));
                 //tv.setText(exampleuserId+"\n"+exampleId+"\n"+exampleTitle+"\n"+exampleCompleted);
-                tv.setText(json.toString());
+                //tv.setText(json.toString());
+
+                for(int i = 0;i<json.length();i++)
+                {
+                    Log.d("JON1",json.getJSONObject(i).toString());
+                    Log.d("JON1",json.getJSONObject(i).getString("first_name"));
+
+                    String first_name = json.getJSONObject(i).getString("first_name");
+                    //int value = json.getJSONObject(i).getInt("value");
+                    String last_name = json.getJSONObject(i).getString("last_name");
+                    //arrayList.add(name+" - "+value+" - "+data);
+
+                    String account_id = json.getJSONObject(i).getString("account_id");
+
+                    if(account_id.equals(GLOBAL_ACCOUNT_ID))
+                    {
+                        tv.setText( tv.getText()+"\n"+first_name+" "+last_name);
+                    }
+
+                }
 
 
             } catch (Exception e) {

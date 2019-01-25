@@ -85,6 +85,9 @@ public class Rejestracja extends AppCompatActivity {
                         Log.i("MSG" , conn.getResponseMessage());
 
                         conn.disconnect();
+
+                        Intent intent = new Intent(getApplicationContext(), Logowanie.class);
+                        startActivity(intent);
                     }
                     else
                     {

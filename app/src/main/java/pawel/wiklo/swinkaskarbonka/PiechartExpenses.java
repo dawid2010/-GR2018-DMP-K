@@ -125,7 +125,7 @@ public class PiechartExpenses extends AppCompatActivity {
                 dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                 pieChart.animateXY(5000, 5000);
 
-                pieChart.setDescription("Wydatki na miesiac grudzien");
+                pieChart.setDescription("Wydatki");
                 pieChart.setUsePercentValues(true);
 
 
