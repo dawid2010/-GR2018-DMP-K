@@ -30,6 +30,8 @@ public class Logowanie extends AppCompatActivity {
     EditText email;
     TextView info;
 
+    static String GLOBAL_ACCOUNT_ID;
+
     public void logowanie(View view) {
 
         new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Skarbonka?fbclid=IwAR2lTNB_fakviS0lFeYGLFXuoJYv2-xRGEn0aA_yN9z0QyQ6bh-QmtqFsy8");
@@ -139,7 +141,10 @@ public class Logowanie extends AppCompatActivity {
                     Log.d("JON1", email.getText().toString());
                     Log.d("JON1", password.getText().toString());
 
+
+
                     if(email.getText().toString().equals(name) && password.getText().toString().equals(pass) ) {
+                        GLOBAL_ACCOUNT_ID = json.getJSONObject(i).getString("account_id");
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     }

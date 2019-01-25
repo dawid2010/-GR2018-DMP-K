@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,18 +27,19 @@ import java.util.ArrayList;
 
 import static pawel.wiklo.swinkaskarbonka.Logowanie.GLOBAL_ACCOUNT_ID;
 
-public class dodawanieWydatkow extends AppCompatActivity {
+public class dodawaniePrzychodu extends AppCompatActivity {
+
 
     ListView listView;
     ArrayList<String> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dodawanie_wydatkow);
+        setContentView(R.layout.activity_dodawanie_przychodu);
         listView=(ListView)findViewById(R.id.listview);
 
         arrayList = new ArrayList<>();
-        arrayList.add("Zakupy");
+        //arrayList.add("Zakupy");
         //arrayList.add("Obuwie");
         //arrayList.add("Zabawki");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
@@ -47,7 +47,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
 
 
-        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome/"+GLOBAL_ACCOUNT_ID+"?a=1");
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Income/"+GLOBAL_ACCOUNT_ID+"?a=1");
         Log.d("DebugLog","1");
 
 
@@ -84,7 +84,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
                     String Nazwa = EditTextNazwa.getText().toString();
                     String Kwota = EditTextKwota.getText().toString();
 
-                    String urlCustom = "http://swinkaskarbonka.somee.com/api/Outcome?value="+Kwota+"&name="+Nazwa+"&account_id="+GLOBAL_ACCOUNT_ID+"&data="+Data;
+                    String urlCustom = "http://swinkaskarbonka.somee.com/api/Income?value="+Kwota+"&name="+Nazwa+"&account_id="+GLOBAL_ACCOUNT_ID+"&data="+Data;
 
                     //URL url = new URL("http://swinkaskarbonka.somee.com/api/Outcome?value=650&name=studia&account_id=1&data=2019-01-21");
                     URL url = new URL(urlCustom);
@@ -141,7 +141,7 @@ public class dodawanieWydatkow extends AppCompatActivity {
     private class WebServiceHandler extends AsyncTask<String, Void, String> {
 
         // okienko dialogowe, które każe użytkownikowi czekać
-        private ProgressDialog dialog = new ProgressDialog(dodawanieWydatkow.this);
+        private ProgressDialog dialog = new ProgressDialog(dodawaniePrzychodu.this);
 
         // metoda wykonywana jest zaraz przed główną operacją (doInBackground())
         // mamy w niej dostęp do elementów UI
@@ -265,5 +265,4 @@ public class dodawanieWydatkow extends AppCompatActivity {
 
         return stringBuilder.toString();
     }
-
 }

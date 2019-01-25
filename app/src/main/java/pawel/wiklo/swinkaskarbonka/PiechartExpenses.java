@@ -26,6 +26,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+import static pawel.wiklo.swinkaskarbonka.Logowanie.GLOBAL_ACCOUNT_ID;
+
 public class PiechartExpenses extends AppCompatActivity {
 
     @Override
@@ -33,7 +35,7 @@ public class PiechartExpenses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piechart_expenses);
 
-        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome?fbclid=IwAR056d1tqD9otgE5QqYoPm89rgJY1oaP55kRDmOloroDQYw8F_uwuq-1LSA");
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome/"+GLOBAL_ACCOUNT_ID+"?a=1");
 
 
     }

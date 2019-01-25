@@ -31,17 +31,26 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import static pawel.wiklo.swinkaskarbonka.Logowanie.GLOBAL_ACCOUNT_ID;
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //new WebServiceHandler().execute("api/LR?login=q&password=q");
+        Log.d("GLOBAL_ACCOUNT_ID",GLOBAL_ACCOUNT_ID);
+
     }
 
 
     public void getData(View view) {
-        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome?fbclid=IwAR056d1tqD9otgE5QqYoPm89rgJY1oaP55kRDmOloroDQYw8F_uwuq-1LSA");
+        //new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/Outcome?fbclid=IwAR056d1tqD9otgE5QqYoPm89rgJY1oaP55kRDmOloroDQYw8F_uwuq-1LSA");
+        new WebServiceHandler().execute("http://swinkaskarbonka.somee.com/api/LR?login=q&password=q");
         Log.d("DebugLog","1");
     }
 
@@ -58,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
     public void getWydatek(View view) {
         //Intent intent = new Intent(this, addIncome.class);
         Intent intent = new Intent(this, dodawanieWydatkow.class);
+        startActivity(intent);
+    }
+
+    public void goToDodawaniePrzychodu(View view) {
+        Intent intent = new Intent(this, dodawaniePrzychodu.class);
         startActivity(intent);
     }
 
@@ -113,23 +127,22 @@ public class MainActivity extends AppCompatActivity {
         dialog.dismiss();
 
         try {
-            Log.d("DebugLog","5");
-            // reprezentacja obiektu JSON w Javie
+
             JSONObject json = new JSONObject(result);
-            Log.d("DebugLog","6");
+
             Log.d("DebugLog","result:" + json);
 
-            String exampleuserId = json.getString("userId");
-            Log.d("DebugLog","result2:" + exampleuserId);
-            String exampleId = json.getString("userId");
-            Log.d("DebugLog","result2:" + exampleId);
-            String exampleTitle = json.getString("title");
-            Log.d("DebugLog","result2:" + exampleTitle);
-            String exampleCompleted = json.getString("completed");
-            Log.d("DebugLog","result2:" + exampleCompleted);
 
-            TextView tv = ((TextView) findViewById(R.id.texvView));
-                tv.setText(exampleuserId+"\n"+exampleId+"\n"+exampleTitle+"\n"+exampleCompleted);
+                //Log.d("JON1", json.getJSONObject(i).toString());
+                //Log.d("JON1", json.getJSONObject(i).getString("account_id"));
+
+                 //GLOBAL_ACCOUNT_ID = json.getJSONObject(i).getString("account_id");
+
+
+
+
+
+
 
 
         } catch (Exception e) {
